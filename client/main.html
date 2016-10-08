@@ -5,9 +5,18 @@
 <body>
     <div class="container">
         <h1>Welcome to Meteor using Coursera!</h1>
+        {{> imageAddForm}}
         {{> images}} {{> info}}
     </div>
 </body>
+
+<template name="imageAddForm">
+    <form class="js-add-image">
+        <input type="text" name="img_src" /><br />
+        <input type="text" name="img_alt" />
+        <button class="btn btn-success">save</button>
+    </form>
+</template>
 
 <template name="images">
 <div class="row">
