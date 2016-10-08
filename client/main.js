@@ -14,3 +14,9 @@ var image_data = [
 ];
 
 Template.images.helpers({ images: image_data });
+
+Template.images.events({
+   'click .js-image': function(event) {
+      $(event.target).css("width", "50px");
+   } 
+});
