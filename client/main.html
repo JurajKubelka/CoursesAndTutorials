@@ -3,15 +3,26 @@
 </head>
 
 <body>
-    <h1>Welcome to Meteor using Coursera!</h1>
-
-    {{> images}} {{> info}}
+    <div class="container">
+        <h1>Welcome to Meteor using Coursera!</h1>
+        {{> images}} {{> info}}
+    </div>
 </body>
 
 <template name="images">
-{{#each images}}
-    <img src="{{img_src}}" alt="{{img_alt}}" />
-{{/each}}
+<div class="row">
+    {{#each images}}
+        <div class="col-xs-12 col-md-3">
+           <div class="thumbnail">
+                <img src="{{img_src}}" alt="{{img_alt}}" />
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>description of the image</p>
+                </div>
+            </div> <!-- thumbnail -->
+        </div> <!-- /col -->
+    {{/each}}
+</div> <!-- /row -->
 </template>
 
 <template name="info">
