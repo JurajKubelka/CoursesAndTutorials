@@ -1,9 +1,14 @@
 Images = new Mongo.Collection("images");
 
 Template.images.helpers({
-    images: Images.find({}, {sort: {createdOn: -1, rating: -1}})
-    // first argument is filter (all images)
-    // second argument is says we want revers sorted images by rating
+    images: Images.find({}, {
+            sort: {
+                createdOn: -1,
+                rating: -1
+            }
+        })
+        // first argument is filter (all images)
+        // second argument is says we want revers sorted images by rating
 });
 
 Template.images.events({
@@ -23,8 +28,17 @@ Template.images.events({
     'click .js-star-image': function (event) {
         var rating = $(event.currentTarget).data("userrating");
         var image_id = this.id; // image id
-        Images.update({_id: image_id}, {$set: {rating: rating}});
+        Images.update({
+            _id: image_id
+        }, {
+            $set: {
+                rating: rating
+            }
+        });
         // first argument is filter, second argument is about what I want to change
+    },
+    'click .js-show-image-form': function (event) {
+        $('#imageAddForm').modal('show');
     }
 });
 
@@ -37,6 +51,7 @@ Template.imageAddForm.events({
             img_alt: img_alt,
             createdOn: new Date(),
         })
+        $('#imageAddForm').modal('hide');
         return false; // false prevents browser to refresh the page
     }
 });
