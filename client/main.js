@@ -37,6 +37,9 @@ Template.images.events({
         });
         // first argument is filter, second argument is about what I want to change
     },
+});
+
+Template.addImageButton.events({
     'click .js-show-image-form': function (event) {
         $('#imageAddForm').modal('show');
     }

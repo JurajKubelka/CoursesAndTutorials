@@ -4,7 +4,16 @@
 
 <body>
     <div class="container">
-        <h1>Welcome to Meteor using Coursera!</h1>
+       <div class="row">
+            <div class="col-md-9">
+                <h1>Welcome to Meteor using Coursera!</h1>
+            </div>
+            <div class="col-md-3">
+                <div class="text-right">
+                    {{> addImageButton}}
+                </div>
+            </div>
+        </div>
         {{> imageAddForm}} {{> images}} {{> info}}
     </div>
 </body>
@@ -33,13 +42,16 @@
     </div>
 </template>
 
+<template name="addImageButton">
+    <button class="btn btn-success js-show-image-form">add image</button>
+</template>
+
 <template name="images">
-<button class="btn btn-success js-show-image-form">add image</button>
 <div class="row">
     {{#each images}}
         <div class="col-xs-12 col-md-3" id="{{_id}}">
            <div class="thumbnail">
-                <img class="js-image" src="{{img_src}}" alt="{{img_alt}}" />
+                <img class="js-image image" src="{{img_src}}" alt="{{img_alt}}" />
                 <div class="caption">
                     <p>{{img_alt}}</p>
                     <p>{{> starsRating mutable=true rating=rating class="js-star-image" id=_id}}</p>
