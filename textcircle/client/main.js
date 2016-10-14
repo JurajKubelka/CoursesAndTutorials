@@ -1,22 +1,13 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+this.Documents = new Mongo.Collection("documents");
+// if we write this.Documents, then Documents is accesible from outside.
 
-import './main.html';
-
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
-
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
-
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
+Template.editor.helpers({
+   docid: function() {
+       var doc = Documents.findOne();
+       if (doc) {
+           return doc._id;
+       } else {
+           return null;
+       }
+   }
 });
