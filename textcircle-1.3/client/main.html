@@ -11,10 +11,24 @@
     </nav>
 
     <div class="container editor-margin-top">
-        {{> editor}}
+        <div class="row">
+            <diw class="col-md-6">
+                {{> editor}}
+            </diw>
+            <diw class="col-md-6">
+                {{> viewer}}
+            </diw>
+        </div>
     </div>
 </body>
 
 <template name="editor">
-    {{>sharejsCM docid=docid id="editor"}}
+    {{>sharejsCM docid=docid onRender=config id="editor"}}
+</template>
+
+
+<template name="viewer">
+    <iframe id="viewer_id">
+        
+    </iframe>
 </template>

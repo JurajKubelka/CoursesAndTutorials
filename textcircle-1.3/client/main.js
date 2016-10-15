@@ -3,17 +3,22 @@ this.Documents = new Mongo.Collection("documents");
 
 Template.editor.helpers({
     docid: function () {
+        // we pass a shared document once it is available
         var doc = Documents.findOne();
         if (doc) {
             return doc._id;
         } else {
             return null;
         }
-    }
-});
+    },
 
-Template.date_display.helpers({
-    current_date: function () {
-        return Session.get("current_date");
+    config: function () {
+        return function (editor) {
+            // here we get access to the ShareJS editor.
+            editor.on("change", function (cm_editor, info) {
+                // we inject new code to the iframe
+                $('#viewer_id').contents().find("html").html(cm_editor.getValue());
+            })
+        }
     }
 });
