@@ -1,5 +1,11 @@
 /* CSS declarations go here */
 
-.editor-margin-top {
+.container-margin-top {
     margin-top: 50px;    
+}
+
+#viewer_id {
+    border: 1px solid gray;
+    resize: both;
+    width: 100%;
 }

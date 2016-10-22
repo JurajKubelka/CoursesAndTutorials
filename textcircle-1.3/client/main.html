@@ -12,7 +12,12 @@
         <!-- / navbar container -->
     </nav>
 
-    <div class="container editor-margin-top">
+    <div class="container container-margin-top">
+        <div class="row">
+          <div class="col-md-12">
+              {{> editingUsers}}
+          </div>
+        </div>
         <div class="row">
             <diw class="col-md-6">
                 {{> editor}}
@@ -25,12 +30,21 @@
 </body>
 
 <template name="editor">
-    {{>sharejsCM docid=docid onRender=config id="editor"}}
+      {{>sharejsCM docid=docid onRender=config id="editor" mode="javascript"}}
 </template>
 
 
 <template name="viewer">
     <iframe id="viewer_id">
-        
     </iframe>
 </template>
+
+
+<template name="editingUsers"> 
+  <p>Editors:
+  {{#each users}}
+      <span class="label label-success">{{firstname}} </span>
+  {{/each}}
+  </p>
+</template>
+
